@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Escolha de Nível - Ajuda Mútua</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .nivel-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .nivel-item label {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      background: #fff;
+      padding: 10px 20px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .nivel-item input {
+      margin-right: 15px;
+    }
+    #mensagem {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Escolha o Nível de Participação</h1>
+  <form id="formNivel">
+    <div class="nivel-item">
+      <label><input type="radio" name="nivel" value="Master" required> Master - R$ 50</label>
+    </div>
+    <div class="nivel-item">
+      <label><input type="radio" name="nivel" value="Safira"> Safira - R$ 100</label>
+    </div>
+    <div class="nivel-item">
+      <label><input type="radio" name="nivel" value="Rubi"> Rubi - R$ 200</label>
+    </div>
+    <div class="nivel-item">
+      <label><input type="radio" name="nivel" value="Esmeralda"> Esmeralda - R$ 400</label>
+    </div>
+    <div class="nivel-item">
+      <label><input type="radio" name="nivel" value="Diamante"> Diamante - R$ 500</label>
+    </div>
+    <button type="submit">Confirmar</button>
+  </form>
+
+  <p id="mensagem" style="color:green; font-weight: bold;"></p>
+
+  <script>
+    document.getElementById("formNivel").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nivel = document.querySelector('input[name="nivel"]:checked').value;
+      document.getElementById("mensagem").innerText = `✅ Nível ${nivel} selecionado com sucesso!`;
+      setTimeout(() => {
+        window.location.href = "pix.html?nivel=" + nivel;
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
